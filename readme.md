@@ -42,6 +42,9 @@ warnings.filterwarnings("ignore")
 ![Image of Yaktocat](/Face Mask Dataset/figures/1st.png)
 <img src="/Face Mask Dataset/figures/1st.png" alt="MarineGEO circle logo" style="height: 40px; width:40px;"/>
 
+<img alt="1st.png" src="/Face Mask Dataset/figures/1st.png" width="" height="" >
+
+
 # 1. Haar Cascade for detecting social distancing violations
 
 
