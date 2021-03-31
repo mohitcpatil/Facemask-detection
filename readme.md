@@ -67,6 +67,7 @@ Composition of properties forming matchable facial features:
 - Value: oriented gradients of pixel intensities 
 
 
+![alt text](https://github.com/mohitcpatilFace Mask Dataset/figures/1st.png?raw=true)
 
 <img src="Face Mask Dataset/figures/haar_features.png">
 
