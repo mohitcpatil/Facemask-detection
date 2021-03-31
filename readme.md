@@ -39,8 +39,7 @@ warnings.filterwarnings("ignore")
 - Validation data: 400 with Mask and 400 without Mask
 - Testing data: 483 with Mask and 509 without Mask
 
-
-<img src="Face Mask Dataset/figures/1st.png">
+![Image of Yaktocat](https://mohitcpatil.github.com/Face Mask Dataset/figures/1st.png)
 
 # 1. Haar Cascade for detecting social distancing violations
 
