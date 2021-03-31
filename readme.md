@@ -40,6 +40,7 @@ warnings.filterwarnings("ignore")
 - Testing data: 483 with Mask and 509 without Mask
 
 ![Image of Yaktocat](/Face Mask Dataset/figures/1st.png)
+<img src="/Face Mask Dataset/figures/1st.png" alt="MarineGEO circle logo" style="height: 100px; width:100px;"/>
 
 # 1. Haar Cascade for detecting social distancing violations
 
