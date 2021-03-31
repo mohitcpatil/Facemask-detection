@@ -33,24 +33,20 @@ warnings.filterwarnings("ignore")
 
 ### **The Data** :
 
-- Dataset of 10k images  divided between masks and no masks. 
+- Dataset of 10k images  divided between masks and no masks.
 - Images contain people across races and ages.
 - Training data: 5000 with Mask and 5000 without Mask
 - Validation data: 400 with Mask and 400 without Mask
 - Testing data: 483 with Mask and 509 without Mask
 
-![Image of Yaktocat](/Face Mask Dataset/figures/1st.png)
-<img src="/Face Mask Dataset/figures/1st.png" alt="MarineGEO circle logo" style="height: 40px; width:40px;"/>
-
-<img alt="1st.png" src="/Face Mask Dataset/figures/1st.png" width="" height="" >
-
+1st.PNG
 
 # 1. Haar Cascade for detecting social distancing violations
 
 
 
 ## Detecting faces using Haar Cascade
-- Cascade function is trained from a lot of positive and negative images. 
+- Cascade function is trained from a lot of positive and negative images.
 - It is then used to detect objects in other images.
 Can be operated in real time
 - Feature extraction and feature evaluation (Rectangular features used)
@@ -61,6 +57,8 @@ A degenerate decision tree of classifiers is formed
 
 <img src="Face Mask Dataset/figures/haar_cascade_algorithm_flow_chart.png">
 
+haar haar_cascade_algorithm_flow_chart.png
+
 ## Haar Features
 - Haar features - All human faces share some similar properties. These regularities may be matched using Haar features.
 - A few properties common to human faces:
@@ -68,7 +66,7 @@ The eye region is darker than the upper-cheeks
 The nose bridge region is brighter than the eyes.
 Composition of properties forming matchable facial features:
 - Location and size: eyes, mouth, bridge of nose
-- Value: oriented gradients of pixel intensities 
+- Value: oriented gradients of pixel intensities
 
 
 ![alt text](https://github.com/mohitcpatilFace Mask Dataset/figures/1st.png?raw=true)
@@ -87,7 +85,7 @@ Each feature is related to a special location in the sub-window
 
 <img src="Face Mask Dataset/figures/haar_feature_extraction.png">
 
-## Complex example 
+## Complex example
 
 <img src="Face Mask Dataset/figures/haar_feature_complex.png">
 
@@ -143,9 +141,9 @@ plt.imshow(out_img)
 
 
 
-    
+
 ![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_21_1.png)
-    
+
 
 
 Iterating over the coordinates of faces and calculating the distance for each possible pair, if the distance for a particular pair is less than MIN_DISTANCE then the bounding boxes for those faces are colored red. MIN_DISTANCE must be manually initialized in such a way that it corresponds to the minimum allowable distance in real life.
@@ -180,18 +178,18 @@ if len(faces)>=2:
             cv2.rectangle(new_img,(x,y),(x+w,y+h),(0,255,0),1)
     plt.figure(figsize=(10,10))
     plt.imshow(new_img)
-      
+
 else:
     print("No. of faces detected is less than 2")
 ```
 
 
-    
+
 ![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_26_0.png)
-    
 
 
-# 2. Face mask detection  
+
+# 2. Face mask detection
 
 ## 2.1 Multilayer Perceptron (CNN)
 
@@ -200,9 +198,9 @@ Multilayer perceptron is a broad terminology, considered as subset of Deep Neura
 
 ```python
 import pandas as pd
-import numpy as np 
-import os  
-from sklearn.model_selection import train_test_split 
+import numpy as np
+import os
+from sklearn.model_selection import train_test_split
 ```
 
 ### Preparing Training data
@@ -211,7 +209,7 @@ from sklearn.model_selection import train_test_split
 
 ```python
 labels = pd.read_csv("Face Mask Dataset/train_labels.csv")   # loading the labels
-labels.head()           
+labels.head()
 ```
 
 
@@ -1310,9 +1308,9 @@ Image('Face Mask Dataset/fm_train/Image_998.jpg')
 
 
 
-    
+
 ![jpeg](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_38_0.jpg)
-    
+
 
 
 
@@ -1386,7 +1384,7 @@ images.head()
 
 ```python
 train_data = pd.merge(images, labels, how = 'inner', on = 'filename')
-train_data.head()  
+train_data.head()
 ```
 
 
@@ -1457,7 +1455,7 @@ train_data.head()
 
 ```python
 import cv2
-data = []     
+data = []
 image_size = 100      # image size taken is 100 here. one can take other size too
 for i in range(len(train_data)):
 
@@ -1524,12 +1522,12 @@ import matplotlib.pyplot as plt
 #view the images
 num_rows, num_cols = 2, 5
 f, ax = plt.subplots(num_rows, num_cols, figsize=(12,5),
-                     gridspec_kw={'wspace':0.03, 'hspace':0.01}, 
+                     gridspec_kw={'wspace':0.03, 'hspace':0.01},
                      squeeze=True)
 
 for r in range(num_rows):
     for c in range(num_cols):
-      
+
         image_index = r * 100 + c
         ax[r,c].axis("off")
         ax[r,c].imshow( data[image_index][0], cmap='gray')
@@ -1542,9 +1540,9 @@ plt.close()
 ```
 
 
-    
+
 ![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_51_0.png)
-    
+
 
 
 ### Separating image and labels
@@ -1592,7 +1590,7 @@ X_train, X_val, y_train, y_val = train_test_split(x,y,test_size=0.3, random_stat
 
 - Fully connected layers uses softmax activation function in output layer
 - Every node in previous layer connected to every node in next layer (I/P -> Hidden -> O/P)
-- Convolution and Pooling model used to identify high level image features 
+- Convolution and Pooling model used to identify high level image features
 - Based on features MLP model classifies the image using training dataset
 
 
@@ -1667,11 +1665,11 @@ model.evaluate(X_val, y_val)
 
 
 - A two layer backpropagation network with hidden nodes proven to be universal approximator
-MLP do not make any assumptions regarding probability 
+MLP do not make any assumptions regarding probability
 - Underlying probability density function
-- Any probabilistic information about pattern classes 
-Required decision function yield directly via training 
-- Preferred techniques for gesture recognition 
+- Any probabilistic information about pattern classes
+Required decision function yield directly via training
+- Preferred techniques for gesture recognition
 
 
 ## 2.2 VGG19
@@ -1717,11 +1715,11 @@ test_generator = test_datagen.flow_from_directory(directory=test_dir,target_size
     Found 992 images belonging to 2 classes.
 
 
-For building the model – 
+For building the model –
 
 **weights**: ImageNet (weights which have been annotated through Image Net have been used. ImageNet is a dataset where images are pre-annotated)
 
-**input_shape**: 128x128 (3 denotes RGB) 
+**input_shape**: 128x128 (3 denotes RGB)
 
 **include_top**: False
 input image is resized and the output classes will be 2 (1000 is default)
@@ -1734,7 +1732,7 @@ vgg19 = VGG19(weights='imagenet',include_top=False,input_shape=(128,128,3))
 
 for layer in vgg19.layers:
     layer.trainable = False
-    
+
 model = Sequential()
 model.add(vgg19)
 model.add(Flatten())
@@ -1744,13 +1742,13 @@ model.summary()
 
     Model: "sequential_1"
     _________________________________________________________________
-    Layer (type)                 Output Shape              Param #   
+    Layer (type)                 Output Shape              Param #
     =================================================================
-    vgg19 (Functional)           (None, 4, 4, 512)         20024384  
+    vgg19 (Functional)           (None, 4, 4, 512)         20024384
     _________________________________________________________________
-    flatten_1 (Flatten)          (None, 8192)              0         
+    flatten_1 (Flatten)          (None, 8192)              0
     _________________________________________________________________
-    dense_3 (Dense)              (None, 2)                 16386     
+    dense_3 (Dense)              (None, 2)                 16386
     =================================================================
     Total params: 20,040,770
     Trainable params: 16,386
@@ -1837,9 +1835,9 @@ sample_mask_img1 = sample_mask_img1/255.0
 ```
 
 
-    
+
 ![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_78_0.png)
-    
+
 
 
 
@@ -1866,9 +1864,9 @@ sample_mask_img2 = sample_mask_img2/255.0
 ```
 
 
-    
+
 ![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_81_0.png)
-    
+
 
 
 
@@ -1935,15 +1933,15 @@ plt.show()
 ```
 
 
-    
+
 ![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_87_0.png)
-    
 
 
 
-    
+
+
 ![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_87_1.png)
-    
+
 
 
 
@@ -1999,13 +1997,13 @@ model.summary()
 
     Model: "sequential_2"
     _________________________________________________________________
-    Layer (type)                 Output Shape              Param #   
+    Layer (type)                 Output Shape              Param #
     =================================================================
-    mobilenetv2_1.00_224 (Functi (None, 5, 5, 1280)        2257984   
+    mobilenetv2_1.00_224 (Functi (None, 5, 5, 1280)        2257984
     _________________________________________________________________
-    flatten_2 (Flatten)          (None, 32000)             0         
+    flatten_2 (Flatten)          (None, 32000)             0
     _________________________________________________________________
-    dense_4 (Dense)              (None, 2)                 64002     
+    dense_4 (Dense)              (None, 2)                 64002
     =================================================================
     Total params: 2,321,986
     Trainable params: 64,002
@@ -2033,31 +2031,31 @@ history = model.fit_generator(generator=train,steps_per_epoch=len(train)// 32,va
 
     Epoch 1/15
     7/7 [==============================] - 6s 575ms/step - loss: 4.8479 - accuracy: 0.6541 - val_loss: 1.0105 - val_accuracy: 0.8438
-    
+
     Epoch 00001: val_accuracy improved from -inf to 0.84375, saving model to moblenet_facemask.h5
     Epoch 2/15
     7/7 [==============================] - 3s 445ms/step - loss: 0.4651 - accuracy: 0.9399 - val_loss: 1.9744e-07 - val_accuracy: 1.0000
-    
+
     Epoch 00002: val_accuracy improved from 0.84375 to 1.00000, saving model to moblenet_facemask.h5
     Epoch 3/15
     7/7 [==============================] - 3s 386ms/step - loss: 0.4585 - accuracy: 0.9741 - val_loss: 0.5303 - val_accuracy: 0.9688
-    
+
     Epoch 00003: val_accuracy did not improve from 1.00000
     Epoch 4/15
     7/7 [==============================] - 3s 438ms/step - loss: 0.1053 - accuracy: 0.9884 - val_loss: 0.7955 - val_accuracy: 0.9688
-    
+
     Epoch 00004: val_accuracy did not improve from 1.00000
     Epoch 5/15
     7/7 [==============================] - 3s 446ms/step - loss: 0.0615 - accuracy: 0.9947 - val_loss: 8.9903e-05 - val_accuracy: 1.0000
-    
+
     Epoch 00005: val_accuracy did not improve from 1.00000
     Epoch 6/15
     7/7 [==============================] - 3s 434ms/step - loss: 0.0122 - accuracy: 0.9965 - val_loss: 0.4482 - val_accuracy: 0.9062
-    
+
     Epoch 00006: val_accuracy did not improve from 1.00000
     Epoch 7/15
     7/7 [==============================] - 3s 418ms/step - loss: 0.1385 - accuracy: 0.9781 - val_loss: 0.0948 - val_accuracy: 0.9688
-    
+
     Epoch 00007: val_accuracy did not improve from 1.00000
     Epoch 00007: early stopping
 
@@ -2093,7 +2091,7 @@ pred[:15]
 
 ```python
 def mobileNet_mask_id(image_name):
-    
+
     mask = "Face Mask Dataset/Validation"
     plt.figure(figsize=(8,7))
     label = {0:"With Mask",1:"Without Mask"}
@@ -2134,9 +2132,9 @@ mobileNet_mask_id('WithoutMask/431.png')
 ```
 
 
-    
+
 ![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_101_0.png)
-    
+
 
 
 
@@ -2145,7 +2143,5 @@ mobileNet_mask_id('WithMask/431.png')
 ```
 
 
-    
-![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_102_0.png)
-    
 
+![png](Face-Mask-Detection-CNN-MLP-VGG99_files/Face-Mask-Detection-CNN-MLP-VGG99_102_0.png)
