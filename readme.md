@@ -1,4 +1,3 @@
-# <center>MACHINE LEARNING PROJECT <center>
 ## <center>Face Mask Detection (CNN - MLP - VGG99 - Mobinet)<center>
 
 ### **Overview**:
