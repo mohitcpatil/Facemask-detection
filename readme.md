@@ -39,11 +39,9 @@ warnings.filterwarnings("ignore")
 - Validation data: 400 with Mask and 400 without Mask
 - Testing data: 483 with Mask and 509 without Mask
 
-1st.PNG
+![](assets/readme-a38d0933.PNG)
 
 # 1. Haar Cascade for detecting social distancing violations
-
-
 
 ## Detecting faces using Haar Cascade
 - Cascade function is trained from a lot of positive and negative images.
@@ -54,10 +52,7 @@ Can be operated in real time
 - Classifier training and feature selection using AdaBoost
 A degenerate decision tree of classifiers is formed
 
-
-<img src="Face Mask Dataset/figures/haar_cascade_algorithm_flow_chart.png">
-
-haar haar_cascade_algorithm_flow_chart.png
+![](assets/readme-ece280b2.png)
 
 ## Haar Features
 - Haar features - All human faces share some similar properties. These regularities may be matched using Haar features.
@@ -68,10 +63,8 @@ Composition of properties forming matchable facial features:
 - Location and size: eyes, mouth, bridge of nose
 - Value: oriented gradients of pixel intensities
 
+![](assets/readme-8391522c.png)
 
-![alt text](https://github.com/mohitcpatilFace Mask Dataset/figures/1st.png?raw=true)
-
-<img src="Face Mask Dataset/figures/haar_features.png">
 
 - The four features matched by this algorithm are then sought in the image of a face
 Rectangle features:
@@ -83,11 +76,11 @@ Each feature is related to a special location in the sub-window
 
 ## Feature extraction
 
-<img src="Face Mask Dataset/figures/haar_feature_extraction.png">
+![](assets/readme-22babaa8.png)
 
 ## Complex example
 
-<img src="Face Mask Dataset/figures/haar_feature_complex.png">
+
 
 ## Creating Integral Image for faster calculation
 - An image representation called the integral image evaluates rectangular features in constant time, which gives them a considerable speed advantage
@@ -99,8 +92,7 @@ Each feature is related to a special location in the sub-window
 
 ## Integral image calculation demo
 
-<img src="Face Mask Dataset/figures/haar_classifer_integral_image_demo.gif">
-
+![](assets/readme-84cfebc6.gif)
 
 ```python
 all_files = []
