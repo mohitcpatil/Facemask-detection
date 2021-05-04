@@ -2,7 +2,7 @@
 
 ### **Overview**:
 Since Covid-19 is now a Pandemic which a according to a lot of agencies, is still to be under control. In the U.S and many other countries in the world, masks are now mandatory in public including grocery stores, parks, schools etc. We see a need of applications which can detect masks on people entering buildings and also whether they are being socially distanced. This applications could be built in directly to the security camera feeds which is present in almost all buildings.
-Places including grocery stores, parks, schools etc. We see a need of applications which can detect masks on people entering buildings and also whether they are being socially distanced. This applications could be built in directly to the security camera feeds which is present in almost all buildings.
+Places including grocery stores, parks, schools etc. We see a need of applications which can detect masks on people entering buildings and also whether they are being socially distanced. This applications could be built in directly to the security camera feeds which is present in almost all building.
 
 
 
