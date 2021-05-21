@@ -1537,7 +1537,7 @@ plt.close()
 
 
 
-### Separating image and labels
+### Separating image and label
 
 
 ```python
